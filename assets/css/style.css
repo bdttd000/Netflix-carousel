@@ -1,0 +1,73 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --slider-padding: 3rem;
+}
+
+body {
+    margin: 0;
+    background-color: #333;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.slider {
+    --slider-index: 0;
+    display: flex;
+    width: calc(100% - 2 * var(--slider-padding));
+    transform: translateX(calc(var(--slider-index) * -100%));
+    margin: 0 .25rem;
+}
+
+.slider > img {
+    flex: 0 0 25%;
+    max-width: 25%;
+    aspect-ratio: 16 / 9;
+    padding: .25rem;
+}
+
+.arrow {
+    background-color: rgba(0,0,0,0.4);
+    width: var(--slider-padding);
+    z-index: 10;
+    flex-grow: 0;
+    margin: .25rem 0;
+    padding: 0 .5rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: white;
+    transition: background-color, font-size .15s ease-in-out;
+    cursor: pointer;
+}
+
+.left-arrow {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.right-arrow {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.container:hover .left-arrow::after {
+    content: '\2039';
+}
+
+.container:hover .right-arrow::after {
+    content: '\203A';
+}
+
+.arrow:hover,
+.arrow:focus {
+    background-color: rgba(0,0,0,0.6);
+    font-size: 6rem;
+}
